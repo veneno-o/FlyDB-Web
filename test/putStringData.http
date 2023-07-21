@@ -1,0 +1,7 @@
+POST http://localhost:1313/api/v1/string/put
+Content-Type: application/json
+
+{
+    "key": "k",
+    "value": "v"
+}
