@@ -1,7 +1,7 @@
 package main
 
 import (
-	"FlyDB-Web/pkg/handler"
+	"FlyDB-Web/pkg/middleware"
 	"FlyDB-Web/pkg/router"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -9,7 +9,7 @@ import (
 
 func main() {
 	r := gin.Default()
-	for _, handlerFunc := range handler.GetAllHandler() {
+	for _, handlerFunc := range middleware.GetAllMiddleware() {
 		r.Use(handlerFunc)
 	}
 	router.Wrapper(r)
