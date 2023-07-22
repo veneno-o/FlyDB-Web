@@ -1,9 +1,9 @@
-package handler
+package middleware
 
 import "github.com/gin-gonic/gin"
 
-// GetAllHandler returns all middleware handlers
-func GetAllHandler() []gin.HandlerFunc {
+// GetAllMiddleware returns all middleware handlers
+func GetAllMiddleware() []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		registerAuthHandler(),
 	}
