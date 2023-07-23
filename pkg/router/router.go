@@ -10,4 +10,5 @@ func Wrapper(r *gin.Engine) {
 	//define router
 	r.GET("/ping", service.Ping)
 	r.POST("/api/v1/string/put", service.PutString)
+	r.POST("/api/v1/string/get", service.GetString)
 }
