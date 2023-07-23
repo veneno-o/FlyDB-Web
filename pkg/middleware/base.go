@@ -7,7 +7,7 @@ func GetAllMiddleware() []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		registerAuthHandler(),
 		registerIpAllowListHandler(),
-		registerQuotaHandler(),
 		registerDbInstanceHandler(),
+		registerQuotaHandler(),
 	}
 }

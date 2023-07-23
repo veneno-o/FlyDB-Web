@@ -24,6 +24,10 @@ func registerDbInstanceHandler() gin.HandlerFunc {
 			})
 			return
 		}
+		if store.Exist(id.(string)) {
+			c.Next()
+			return
+		}
 		err = store.CreateUser(v1.User{
 			Id:       id.(string),
 			Db:       dbInstance,
