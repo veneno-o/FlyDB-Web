@@ -1,6 +1,9 @@
 package v1
 
-import "sync"
+import (
+	"errors"
+	"sync"
+)
 
 type User struct {
 	Id       string
@@ -10,28 +13,29 @@ type User struct {
 }
 
 type UserStore interface {
-	GetUser(id string) (*User, error)
-	GetUsers() (map[string]User, error)
-	CreateUser(user *User) error
+	GetUser(id string) User
+	GetUsers() map[string]User
+	CreateUser(user User) error
 }
 
 type userStore struct {
 	userMap map[string]User
 }
 
-func (u userStore) GetUser(id string) (*User, error) {
-	//TODO implement me
-	panic("implement me")
+func (u *userStore) GetUser(id string) User {
+	return u.userMap[id]
 }
 
-func (u userStore) GetUsers() (map[string]User, error) {
-	//TODO implement me
-	panic("implement me")
+func (u *userStore) GetUsers() map[string]User {
+	return u.userMap
 }
 
-func (u userStore) CreateUser(user *User) error {
-	//TODO implement me
-	panic("implement me")
+func (u *userStore) CreateUser(user User) error {
+	if _, ok := u.userMap[user.Id]; ok {
+		return errors.New("user already exists")
+	}
+	u.userMap[user.Id] = user
+	return nil
 }
 
 var cache userStore
@@ -45,5 +49,5 @@ func GetUserStore() UserStore {
 			}
 		}
 	})
-	return cache
+	return &cache
 }
