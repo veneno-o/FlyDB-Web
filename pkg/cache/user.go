@@ -7,7 +7,7 @@ import (
 
 type User struct {
 	Id       string
-	Db       interface{}
+	Db       []interface{}
 	TotalMem int64
 	UsedMem  int64
 }
