@@ -17,6 +17,7 @@ type UserStore interface {
 	GetUsers() map[string]User
 	CreateUser(user User) error
 	UpdateUser(user User) error
+	Exist(id string) bool
 }
 
 var cache userStore
@@ -59,4 +60,9 @@ func (u *userStore) UpdateUser(user User) error {
 	}
 	u.userMap[user.Id] = user
 	return nil
+}
+
+func (u *userStore) Exist(id string) bool {
+	_, ok := u.userMap[id]
+	return ok
 }
