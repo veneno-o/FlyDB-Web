@@ -2,7 +2,6 @@ package service
 
 import (
 	R "FlyDB-Web/pkg/result"
-	"fmt"
 	"github.com/ByteStorage/FlyDB/config"
 	"github.com/ByteStorage/FlyDB/structure"
 	"github.com/gin-gonic/gin"
@@ -14,7 +13,6 @@ type RequestBody struct {
 }
 
 func PutString(c *gin.Context) {
-	fmt.Println("PutString")
 	id, exists := c.Get("id")
 	if !exists {
 		R.Error(c, 400, "user not login")

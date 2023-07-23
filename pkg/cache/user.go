@@ -3,28 +3,28 @@ package v1
 import "sync"
 
 type User struct {
-	Id       int64
+	Id       string
 	Db       interface{}
 	TotalMem int64
 	UsedMem  int64
 }
 
 type UserStore interface {
-	GetUser(id int64) (*User, error)
-	GetUsers() (map[int64]User, error)
+	GetUser(id string) (*User, error)
+	GetUsers() (map[string]User, error)
 	CreateUser(user *User) error
 }
 
 type userStore struct {
-	userMap map[int64]User
+	userMap map[string]User
 }
 
-func (u userStore) GetUser(id int64) (*User, error) {
+func (u userStore) GetUser(id string) (*User, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (u userStore) GetUsers() (map[int64]User, error) {
+func (u userStore) GetUsers() (map[string]User, error) {
 	//TODO implement me
 	panic("implement me")
 }
@@ -41,7 +41,7 @@ func GetUserStore() UserStore {
 	once.Do(func() {
 		if cache.userMap == nil {
 			cache = userStore{
-				userMap: make(map[int64]User),
+				userMap: make(map[string]User),
 			}
 		}
 	})
