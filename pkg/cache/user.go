@@ -16,6 +16,21 @@ type UserStore interface {
 	GetUser(id string) User
 	GetUsers() map[string]User
 	CreateUser(user User) error
+	UpdateUser(user User) error
+}
+
+var cache userStore
+
+func GetUserStore() UserStore {
+	once := sync.Once{}
+	once.Do(func() {
+		if cache.userMap == nil {
+			cache = userStore{
+				userMap: make(map[string]User),
+			}
+		}
+	})
+	return &cache
 }
 
 type userStore struct {
@@ -38,16 +53,10 @@ func (u *userStore) CreateUser(user User) error {
 	return nil
 }
 
-var cache userStore
-
-func GetUserStore() UserStore {
-	once := sync.Once{}
-	once.Do(func() {
-		if cache.userMap == nil {
-			cache = userStore{
-				userMap: make(map[string]User),
-			}
-		}
-	})
-	return &cache
+func (u *userStore) UpdateUser(user User) error {
+	if _, ok := u.userMap[user.Id]; !ok {
+		return errors.New("user not exists")
+	}
+	u.userMap[user.Id] = user
+	return nil
 }
