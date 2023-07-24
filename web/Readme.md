@@ -1,1 +1,26 @@
-This is used to write Vue projects and build front-end interfaces.
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
+
+- technology
+Vue3 + Pinia + Element-Plus
