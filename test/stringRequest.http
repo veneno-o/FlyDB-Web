@@ -14,3 +14,13 @@ Content-Type: application/json
 {
     "key": "k"
 }
+
+
+### DELETE String
+DELETE http://localhost:1313/api/v1/string/delete
+Content-Type: application/json
+
+{
+  "key": "k"
+}
+
