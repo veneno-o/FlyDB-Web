@@ -1,0 +1,28 @@
+### Put hash
+POST http://localhsot:1313/api/v1/hash/hset
+Content-Type: application/json
+
+{
+  "key": "k",
+  "field": "wcg",
+  "value": "v"
+}
+
+### Get hash
+POST http://localhsot:1313/api/v1/hash/hget
+Content-Type: application/json
+
+{
+  "key": "k",
+  "field": "wcg"
+}
+
+
+### DELETE hash
+DELETE http://localhsot:1313/api/v1/hash/hdel
+Content-Type: application/json
+
+{
+  "key": "k",
+  "field": "wcg"
+}

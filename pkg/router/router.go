@@ -12,4 +12,7 @@ func Wrapper(r *gin.Engine) {
 	r.POST("/api/v1/string/put", service.PutString)
 	r.POST("/api/v1/string/get", service.GetString)
 	r.DELETE("/api/v1/string/delete", service.DeleteString)
+	r.POST("/api/v1/hash/hget", service.GetHash)
+	r.POST("/api/v1/hash/hset", service.SetHash)
+	r.DELETE("/api/v1/hash/hdel", service.DelHash)
 }
