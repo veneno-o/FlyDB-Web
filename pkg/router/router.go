@@ -11,4 +11,5 @@ func Wrapper(r *gin.Engine) {
 	r.GET("/ping", service.Ping)
 	r.POST("/api/v1/string/put", service.PutString)
 	r.POST("/api/v1/string/get", service.GetString)
+	r.DELETE("/api/v1/string/delete", service.DeleteString)
 }
