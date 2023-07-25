@@ -2,6 +2,7 @@ package v1
 
 import (
 	"errors"
+	"github.com/ByteStorage/FlyDB/structure"
 	"sync"
 )
 
@@ -65,4 +66,19 @@ func (u *userStore) UpdateUser(user User) error {
 func (u *userStore) Exist(id string) bool {
 	_, ok := u.userMap[id]
 	return ok
+}
+
+func (u *User) Close() error {
+	for _, db := range u.Db {
+		switch v := db.(type) {
+		case *structure.StringStructure:
+			err := v.Stop()
+			if err != nil {
+				return err
+			}
+		default:
+			return errors.New("unknown type")
+		}
+	}
+	return nil
 }
