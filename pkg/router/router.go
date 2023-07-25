@@ -18,4 +18,5 @@ func Wrapper(r *gin.Engine) {
 	r.DELETE("/api/v1/hash/hdel", service.DelHash)
 	r.GET("/auth/github", service.AuthGithub)
 	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
+	r.GET("/health", service.Health)
 }
