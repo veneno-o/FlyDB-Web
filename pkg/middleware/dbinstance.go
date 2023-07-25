@@ -17,15 +17,15 @@ func registerDbInstanceHandler() gin.HandlerFunc {
 			})
 			return
 		}
+		if store.Exist(id.(string)) {
+			c.Next()
+			return
+		}
 		dbInstance, err := createAllDbInstance(id.(string))
 		if err != nil {
 			c.AbortWithStatusJSON(500, gin.H{
 				"message": err.Error(),
 			})
-			return
-		}
-		if store.Exist(id.(string)) {
-			c.Next()
 			return
 		}
 		err = store.CreateUser(v1.User{
@@ -40,6 +40,7 @@ func registerDbInstanceHandler() gin.HandlerFunc {
 			})
 			return
 		}
+		c.Next()
 	}
 }
 
