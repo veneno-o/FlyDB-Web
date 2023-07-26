@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
-import Aslide from './components/Aslide/index.vue';
+import { RouterView } from 'vue-router'
+import {useCounterStore} from "./stores/index"
+import Sidebar from "@/components/Sidebar/index.vue"
+const locale = useCounterStore()
+
 </script>
 
 <template>
-  <div>
+  <el-config-provider :locale="locale">
     <RouterView />
-    <Aslide></Aslide>
-  </div>
+    <Sidebar />
+  </el-config-provider>
 </template>

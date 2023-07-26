@@ -1,5 +1,5 @@
 <template>
-  <div onclick=""></div>
+  <div onclick="">Case</div>
 </template>
 
 <script setup lang="ts"></script>

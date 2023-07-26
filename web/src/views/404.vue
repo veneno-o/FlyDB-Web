@@ -1,7 +1,13 @@
 <template>
-  <div>404</div>
+    <h1 class="notFound">
+        404
+    </h1>
 </template>
 
-<script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.notFound{
+    margin: auto;
+    text-align: center;
+}
+</style>
